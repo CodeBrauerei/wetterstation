@@ -1,0 +1,128 @@
+/* ==========================================================================
+   HTML5 Boilerplate styles - h5bp.com (generated via initializr.com)
+   ========================================================================== */
+
+@import url(http://fonts.googleapis.com/css?family=Arvo:400,700);
+
+html,button,input,select,textarea{color:#222;}
+body{font-size:1em;line-height:1.4;}
+hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0;}
+img{vertical-align:middle;}
+fieldset{border:0;margin:0;padding:0;}
+textarea{resize:vertical;}
+.chromeframe{background:#ccc;color:#000;margin:.2em 0;padding:.2em 0;}
+::-moz-selection,::selection{background:#b3d4fc;text-shadow:none;}
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+#top {
+    width: 100%;
+    height: 50px;
+    margin: 0px auto 10px;
+    position: fixed;
+    box-shadow: 0 0 5px #999;
+}
+ 
+#top h1 {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-family: 'Arvo', Helvetica, sans-serif;
+    font-size: 32px;
+    color: #222;
+
+    text-shadow: 0 0 5px #666;
+}
+
+#main {
+    width: 700px;
+    min-height: 500px;
+    margin: 75px auto 0;
+    box-shadow: 0 0 5px #ccc;
+    padding: 10px;
+}
+
+#main img.icon {
+    float: right;
+    width: 200px;
+    height: 200px;
+}
+
+#main h2 {
+    font-family: 'Arvo', sans-serif;
+}
+
+span.temp {
+    float: right;
+    font-family: Arial, sans-serif;
+    font-size: 50px;
+    padding-right: 25px;
+    margin-bottom: -50px;
+}
+
+#data {
+    width: 300px;
+    margin-top: -25px;
+}
+
+ul.daten {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+ul.daten li {
+  border-bottom: 1px solid #ccc;
+  padding: 2px 0;
+}
+
+ul.daten li span {
+  float: right;
+}
+
+
+.half-box {width: 47.5%;}
+.third-box {width: 30.5%;}
+.quarter-box {width: 21.9%;}
+.fifth-box {width: 16.7%;}
+.twothirds-box {width: 65.3%;}
+.threequaters-box {width: 74.0%;}
+.twofifth-box {width: 37.2%;}
+.threefifth-box {width: 58.0%;}
+.fourfifth-box {width: 79.0%;}
+
+.half-box, .third-box, .twothirds-box, .quarter-box, .threequaters-box, .fifth-box, .twofifth-box, .threefifth-box, .fourfifth-box {
+    position: relative;
+    display: inline-block;
+    *display: inline;
+    float: left;
+    margin-right: 4%;
+    margin-bottom: 15px;
+}
+
+.lastbox {
+    margin-right: 0 !important;
+}
+
+
+
+
+
+
+
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+.ir{background-color:transparent;border:0;overflow:hidden;text-indent:-9999px;}
+.ir:before{content:"";display:block;width:0;height:150%;}
+.hidden{display:none!important;visibility:hidden;}
+.visuallyhidden{border:0;clip:rect(0000);height:1px;overflow:hidden;position:absolute;width:1px;margin:-1px;padding:0;}
+.visuallyhidden.focusable:active,.visuallyhidden.focusable:focus{clip:auto;height:auto;overflow:visible;position:static;width:auto;margin:0;}
+.invisible{visibility:hidden;}
+.clearfix:before,.clearfix:after{content:" ";display:table;}
+.clearfix:after{clear:both;}
+.clearfix{zoom:1;}
