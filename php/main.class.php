@@ -8,6 +8,22 @@ class ParseData {
         $this->input = $input;
     }
 
+    public function openCOM() {
+        //return NULL;
+        exec("mode COM1: BAUD=4800 PARITY=N data=8 stop=1 XON=off TO=on;");
+        $fp = @fopen('COM1', 'r+');
+        //stream_set_timeout($fp,1);
+
+        if (!$fp) {
+            echo "<!--Port konnte nicht ge&ouml;ffnet werden.-->\n";
+        } else {
+            echo "<!--Port COM1 erfolgreich ge&ouml;ffnet.-->\n";
+            $c = fread($fp, 1024);
+            echo $c;
+            //fclose($fp);
+        }
+    }
+
     public function generateData() {
         $result = "";
         $inString = $this->input;
@@ -19,7 +35,7 @@ class ParseData {
         }
         $result = explode("|", $result);
         $result = array_values($result);
-        $result = $this->convertData($result);
+        $result = $this->convertData($this->getValue($result));
         return $result;
     }
 
@@ -37,6 +53,7 @@ class ParseData {
         $niederschlag = $data[8];   // 0-200 Liter
         $licht = $data[9];          // 0-1000 Lux
         $wertung = "";
+
         if ($druck > 1000) {
             if ($licht > 700) {
                 if ($niederschlag == 0) {
@@ -52,7 +69,9 @@ class ParseData {
                 }
             }
         } elseif ($druck < 1000) {
+
             if ($niederschlag == 0) {
+
                 $wertung = "fog";
             } elseif ($niederschlag < 50) {
                 $wertung = "rainy";
@@ -98,4 +117,5 @@ class ParseData {
     }
 
 }
+
 ?>

@@ -1,11 +1,18 @@
 <?php
+$s = microtime(true);
 /* Tobias Haber | Gabriel Wanzek | WetterStation */
 require_once('./php/main.class.php');
-$input = 'T1:-5.55!T2:-6.4!T3:-4.2!LF:90!LD:990!BT:-200!WG:30!WR:N!NS:600!LI:1000!';
+require_once('./php/Mysql.php');
+
+$mysql = new Mysql();
+$arr = $mysql->getLastWetterData();
+$input = 'T1:' . $arr['T1'] . '!T2:' . $arr['T2'] . '!T3:' . $arr['T3'] . '!LF:' . $arr['LF'] . '!LD:' . $arr['LD'] . '!BT:' . $arr['BT'] . '!WG:' . $arr['WG'] . '!WR:' . $arr['WR'] . '!NS:' . $arr['NS'] . '!LI:' . $arr['LI'] . '!';
 
 $parseData = new ParseData($input);
+
 $output = $parseData->generateData();
 $data = $parseData->getValue();
+$test = $parseData->openCOM();
 ?>
 <!DOCTYPE html>
 <html class="no-js">
@@ -28,10 +35,10 @@ $data = $parseData->getValue();
         <div class="clearfix"></div>
         <div id="wrapper"> 
             <div id="main">
+                <p style="font-style:italic;margin:0;text-align:right;width:100%;">Wetterdaten vom: <?=date("d.m.Y H:i:s", strtotime($arr['insert-date']))?></p>
                 <h2><?= $output['wetter'] ?></h2>
                 <div class="half-box">
                     <img src="img/wettericons/<?= $output["imgPath"] ?>" alt="" class="icon">
-
                     <span class="temp"><?= $output["temp"] ?>°C</span>
                 </div>
                 <div class="half-box lastbox">
@@ -47,8 +54,13 @@ $data = $parseData->getValue();
                         <li>Niederschlagsmenge<span><?= $data[8] ?></span></li>
                         <li>Licht<span><?= $data[9] ?></span></li>
                     </ul>
-
                 </div>
+            </div>
+            <div class="footer">
+                <?php
+                $e = microtime(true);
+                echo "Seitenladezeit: " . round($e - $s, 2) . " Sekunden";
+                ?>
             </div>
             <script src="js/vendor/jquery-1.9.1.min.js"></script>
             <script src="js/main.js"></script>
